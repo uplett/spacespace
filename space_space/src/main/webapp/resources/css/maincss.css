@@ -1,5 +1,12 @@
+ul, li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+
+
 #allwrap{
-	background: linear-gradient(to top, #FDB0CF, #FFFFFF);
     width:100%;
     display: flex;
     flex-direction: column;
@@ -10,6 +17,10 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background: white;
+	position: fixed;
+    top: 0;
+    z-index: 98;
 	
 }
 
@@ -62,24 +73,47 @@
 
 
 #menubar{
-	width: 80%;
-	height: 80px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: row;
-	border-top: 2px solid pink;
-	border-bottom: 2px solid pink;
-	background: RGBA(255,255,255,0.8);
+	width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-top: 1px solid #ebe1e7;
+    border-bottom: 1px solid #cda9a9;
+    background: white;
+    z-index: 99;
+    box-shadow: 0 4px 4px -4px #ac9a9a;
 }
+
+
 
 .top_sub{
 	display: flex;
-	align-content: center;
-	justify-content: center;
 	font-weight: bold;
 	color: #ED167E;
-	padding: 25px;
+	padding: 20px 0;
+}
+
+.top_sub>li{
+	width:130px;
+	text-align: center;
+}
+
+.top_sub>li>ul{
+	font-size: 13px;
+	margin-top: 15px;
+    margin-bottom: 40px;
+	color: grey;
+	font-weight: lighter;
+}
+
+.top_sub>li>ul>li{
+	margin-top:3px;
+	margin-bottom: 3px;
+}
+
+.hide_menu{
+	display:none;
 }
 
 #mainwrap{
@@ -87,6 +121,8 @@
 	flex-direction: column;
 	align-items: center;
 	height: 800px;
+	padding-top: 200px;
+	background: linear-gradient(to top, transparent, #ffe6ec) 98%;
 }
 
 #mainwrap>div{
@@ -94,36 +130,53 @@
 }
 
 #events{
-	width: 80%;
-	height:500px;
+	width: 800px;
+	height: 600px;
     margin: 15px;
     position: relative;
+    overflow: hidden;
 }
 
 #events>i{
 	position: absolute;
-	font-size: 100px;
-	opacity: 0.7;
+	font-size: 80px;
+	opacity: 0.6;
+	color: #ff9b9b;
+	top: 45%;
+	cursor:pointer;
 }
 
-#events>img{
-	width: 100%;
-	height: 100%;
+#events>ul{
+	width: 800px;
+	height: 600px;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+#events>ul>li>img{
+	width: 800px;
+	height: 600px;
 }
 
 #events>div{
 	display: flex;
 	flex-direction: row;
 	position: absolute;
-    bottom: 30px;
-    right: 30px;
+  	bottom: 5%;
+    right: 5%;
+    color: #ff9b9b;
 }
 
-#events>div>a{
+#events>div>i{
 	margin-left: 5px;
 	margin-right: 5px;
-	opacity: 0.7;
+	cursor:pointer;
 }
+
+
 
 #products{
 	flex-direction: row;
