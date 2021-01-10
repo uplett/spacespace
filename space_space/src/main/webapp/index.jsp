@@ -4,38 +4,38 @@
 <html>
 <link rel="stylesheet" type="text/css" href="resources/css/maincss.css?a">
 <link rel="stylesheet" type="text/css" href="resources/css/reset.css?a">
+<link rel="shortcut icon" href="resources/icon/favicon.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c945c12587.js" crossorigin="anonymous"></script>
 <!-- 스크립트 영역 -->
 <script type="text/javascript">
 $(document).ready(function() {
-	
-	//슬라이드 동그라미
-	
-	var dots = $('#circle');
-	var dot1 = $('#circle:nth-child(1)');
-	var dot2 = $('#circle:nth-child(2)');
-	var dot3 = $('#circle:nth-child(3)');
-	var dot4 = $('#circle:nth-child(4)');
-	
-	dot2.click(function() {
-		console.log('클릭됨');
-			
-		dot2.replaceWith('<i class="fas fa-circle"></i>');
-		dots.not(dot2).replaceWith('<i class="far fa-circle"></i>');
-				
-	});
-	
+
 	// 상단메뉴 호버 
 	
-	$('#topwrap').mouseover(function(){$('.hide_menu').slideDown();});
-	$('#topwrap').mouseleave(function(){$('.hide_menu').slideUp();});
+	$('#topwrap').hover(
+			function(){$('.hide_menu').slideDown();},
+			function(){$('.hide_menu').slideUp();});
 	
 	//슬라이드 화살표 
 	
 	var left = $('#left_arrow');
 	var right = $('#right_arrow');
 	var event_list = $('#events>ul');	
+	
+	//슬라이드 도트
+	
+	var dots = $('#circle>div');
+	var dot1 = $('#circle>div:nth-child(1)');
+	var dot2 = $('#circle>div:nth-child(2)');
+	var dot3 = $('#circle>div:nth-child(3)');
+	var dot4 = $('#circle>div:nth-child(4)');
+	
+	
+	function change_dot(dot) {
+		dot.text('●');
+		dots.not(dot).text('○');	
+	};
 	
 	
 	
@@ -45,6 +45,25 @@ $(document).ready(function() {
 		var top_var = parseInt(top.split('px'));
 		
 		var num;
+		
+		// 한 바퀴 돌고 초기화
+		
+		switch (top_var) {
+		case 0:
+			change_dot(dot2);
+			break;
+		case -800:
+			change_dot(dot3);
+			break;
+		case -1600:
+			change_dot(dot4);
+			break;
+
+		default:
+			change_dot(dot1);
+			break;
+
+		}
 		
 		if(top_var<=-2400){
 			num = 0;
@@ -61,8 +80,26 @@ $(document).ready(function() {
 		
 		var top = event_list.css('left');
 		var top_var = parseInt(top.split('px'));
-		
 		var num;
+		
+		switch (top_var) {
+			
+		case -2400:
+			change_dot(dot3);
+			break;
+		case -1600:
+			change_dot(dot2);
+			break;
+		case -800:
+			change_dot(dot1);
+			break;
+		
+		default:
+			change_dot(dot4);
+			break;
+		}
+		
+		// 한 바퀴 돌고 초기화 
 		
 		if(top_var>=0){
 			num = -2400;
@@ -71,8 +108,31 @@ $(document).ready(function() {
 			num = top_var+800;
 		}
 		
+		
 		event_list.css('left', num);
+	});	
+	
+	dot1.click(function() {
+		change_dot(dot1);
+		event_list.css('left', 0); 
 	});
+
+	
+	dot2.click(function() {
+		change_dot(dot2);
+		event_list.css('left', -800); 
+	});
+	
+	dot3.click(function() {
+		change_dot(dot3);
+		event_list.css('left', -1600); 
+	});
+	
+	dot4.click(function() {
+		change_dot(dot4);
+		event_list.css('left', -2400); 
+	});
+	
 	
 
 
@@ -180,20 +240,23 @@ $(document).ready(function() {
 			<i id= "left_arrow" class="fas fa-chevron-left" style="left: 20px;"></i>
 			<i id= "right_arrow" class="fas fa-chevron-right" style="right: 20px;"></i>
 			<div id="circle">
-				<i class="fas fa-circle"></i>
-				<i class="far fa-circle"></i>
-				<i class="far fa-circle"></i>
-				<i class="far fa-circle"></i>
+				<div class="circle">●</div>
+				<div class="circle">○</div>
+				<div class="circle">○</div>
+				<div class="circle">○</div>
 			</div>
 		</div>
 		<div id="products">
-			<div>
+			<div id="banner">
+				2021 신상 포함 어쩌구 바로가기
+			</div>
+			<div class="product">
 				상
 			</div>
-			<div>
+			<div class="product">
 				품
 			</div>
-			<div>
+			<div class="product">
 				들
 			</div>
 		</div>
@@ -201,12 +264,34 @@ $(document).ready(function() {
 	</div>
 	
 	<div id="footwrap">
-	
-	</div>
+		<div id="footleft">
+			<ul>
+				<li>ADDRESS<br></li>
+				<li>주소주소주소주소주소 주소주소 주소주소주소주소<br>
+				(주소주소주소주소주소주소주소주소주소)</li>
+				<li><span>대표 윤주현, 박예림</span><span>TEL 010-6252-3724</span></li>
+				<li><span>사업자등록번호 21-13-112112 </span><span>통신판매업 신고 2020-묘먕묘먕-1234</span></li>
+			</ul>
+			<div>
+				© 2021. SPACESPACE. all rights reserved.
+			</div>
+		</div>
+		<div id="footright">
+			<ul>
+				<li>
+					<span><img src='resources/icon/instagram.png'></span>
+					<span><img src='resources/icon/facebook.png'></span>
+					<span><img src='resources/icon/twitter.png'></span>
+					<span><img src='resources/icon/naver.png'></span>
+				</li>
+				<li>openkakao.com/SPACESPACE/1241240EE1aa</li>
+			</ul>
 		
+		</div>
 
+	</div>
+	
 </div>
-
 
 </body>
 </html>
