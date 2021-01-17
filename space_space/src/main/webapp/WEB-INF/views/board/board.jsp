@@ -11,16 +11,18 @@
 <script src="resources/js/main.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>SPACE-SPACE</title>
+<title>SPACESPACE</title>
 </head>
 <body>
-
-<div id="allwrap" style="">
+<div id="allwrap">
 <%@ include file="/../header.jsp"%>
-<%@ include file="/../main.jsp"%>
-<%@ include file="/../footer.jsp"%>	
-	
+<div id="mainwrap">
+문의게시판
 </div>
+<%@ include file="/../footer.jsp"%>
+
+</div>
+
 
 </body>
 </html>

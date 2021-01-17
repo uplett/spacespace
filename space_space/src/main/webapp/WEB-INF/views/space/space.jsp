@@ -9,18 +9,21 @@
 <script src="https://kit.fontawesome.com/c945c12587.js" crossorigin="anonymous"></script>
 <!-- 헤더 스크립트 -->
 <script src="resources/js/main.js"></script>
+<script src="resource/js/maintab.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>SPACE-SPACE</title>
+<title>SPACESPACE</title>
 </head>
 <body>
-
-<div id="allwrap" style="">
+<div id="allwrap">
 <%@ include file="/../header.jsp"%>
-<%@ include file="/../main.jsp"%>
-<%@ include file="/../footer.jsp"%>	
-	
+<div id="mainwrap">
+메인페이지~~~~~~~~~~
 </div>
+<%@ include file="/../footer.jsp"%>
+
+</div>
+
 
 </body>
 </html>
