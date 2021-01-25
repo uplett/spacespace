@@ -12,7 +12,7 @@
 	height: 100%;
 	align-items: center;
 	background: white;
-	padding-bottom: 200px;
+	padding-bottom: 150px;
 }
 
 #tablebox{
@@ -38,6 +38,7 @@
 	font-weight: bold;
 	border-bottom: 3px solid lightgrey;
 	justify-content: center;
+	width: 200px;
 }
 
 #conditionbox{
@@ -52,6 +53,7 @@
 	font-weight: bold;
 	color: #717171;
 	letter-spacing: -1px;
+	cursor: pointer;
 }
 
 .condition_check>span>i{
@@ -87,20 +89,110 @@
 	padding: 3px;
 	overflow: auto;
 	overflow-x: hidden;
-	font-size: 12px;
+	font-size: 11px;
 }
 
-#table{
+form{
+	width: 100%;
+	position: relative;
+	font-size: 14px;
+}
+
+table{
 	display: flex;
 	width: 100%;
-	border: 1px solid grey;
+	color: #3c3c3c;
+	margin-top: 30px;
+}
+
+tbody{
+	width: 100%;
 }
 
 tr,td{
 	display:flex;
 }
 
+tr{
+	padding: 10px 0;
+	border-bottom: 1px solid lightgrey;
+	align-items: center;
+}
+
 tr>td:first-child {
+	width: 170px;
+	font-weight: bold;
+}
+
+tr>td:last-child{
+	align-items: center;
+}
+
+span{
+	color: #3c3c3c;
+	font-size: 13px;
+	margin-left: 8px;
+}
+
+input{
+	width: 130px;
+	height: 25px;
+	border: none;
+	background: #efefef;
+}
+
+input:focus {outline:2px solid pink;}
+
+
+.button{
+	height: 20px;
 	background: pink;
-	width: 200px;
+	border: none;
+	border-radius: 4px;
+    font-size: 13px;
+    margin-left: 5px;
+    height: 30px;
+    font-weight: bold;
+}
+
+select{
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	appearance: none;
+	background: #efefef;
+	padding: 2px;
+	margin-left: 2px;
+}
+
+option{
+	font-size: 14px;	
+}
+
+.phone{
+	width: 80px;
+	text-align: center;
+	margin-right: 3px;
+}
+
+.address{
+	width: 300px;
+    text-align: center;
+}
+
+#submit{
+	position: absolute;
+    right: 0;
+    margin-top: 10px;
+    text-align: center;
+    background: #b762a1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 90px;
+    height: 35px;
+}
+
+.pink{
+	color: pink;
 }

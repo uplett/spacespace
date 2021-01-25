@@ -18,6 +18,12 @@ public class ProductController {
 		return "product/clothes";
 	}
 	
+	@RequestMapping("station")
+	public String station() {
+		System.out.println("매핑됨-문구페이지");
+		return "product/station";
+	}
+	
 	@RequestMapping("props")
 	public String props() {
 		System.out.println("매핑됨-의류페이지");

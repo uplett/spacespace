@@ -2,6 +2,7 @@ package com.spacespace.laika.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AdminController {
@@ -12,9 +13,13 @@ public class AdminController {
 		return "/admin/error";
 	}
 	
-	@RequestMapping("join")
+	
+	
+//회원가입
+	
+	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public String join() {
-		System.out.println("매핑됨-회원가입");
+		System.out.println("매핑됨-회원가입폼");
 		return "/admin/join";
 	}
 	

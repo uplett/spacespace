@@ -22,10 +22,10 @@
 		<div id="footright">
 				<div>
 					<span><img src='resources/icon/instagram.png'></span>
-					<span><img src='resources/icon/facebook.png'></span>
 					<span><img src='resources/icon/twitter.png'></span>
 					<span><img src='resources/icon/naver.png'></span>
 					<span><img src='resources/icon/kakao.png'></span>
+					<span><img src='resources/icon/facebook.png'></span>
 				</div>
 			<ul>
 				<li>02-938-9770</li>
