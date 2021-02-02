@@ -4,24 +4,49 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 
-<mapper namespace="com.spacespace.laika/mappers">
+<mapper namespace="com.spacespace.laika.mappers">
 
+<resultMap type="memberVO" id="memberResult">
+	<result property="id" column="id"/>
+	<result property="pw" column="pw"/>
+	<result property="name" column="name"/>
+	<result property="address" column="address"/>
+	<result property="email" column="email"/>
+	<result property="phone" column="phone"/>
+	<result property="regDate" column="regDate"/>
+</resultMap>
 
-	<!-- 회원가입 -->
-
-	<insert id="register" >
-		INSERT INTO space_space.member( id
+<!-- 회원가입 -->
+	<insert id="join" parameterType="memberVO">
+		INSERT INTO member(index
+										, id
 										, pw
+										, name
 										, address
 										, email
 										, phone,
 										, regDate)
-					VALUES( #{id}
+					VALUES( null,
+					 		#{id}
 							, #{pw}
+							, #{name}
 							, #{address}
 							, #{email}
-							, #{phone})
+							, #{phone}
+							, #{regDate})
 	
 	</insert>
+
+	<!-- 아이디 중복 검사 -->
+	<select id="check_id" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM member where id = #{id}
+	</select>
+	
+	<select id="check_email" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM member where email = #{email}
+	</select>
+
+
+	
 
 </mapper>

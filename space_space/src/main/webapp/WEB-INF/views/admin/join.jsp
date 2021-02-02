@@ -67,7 +67,7 @@
 									상관례에 따릅니다<br>
 								</div>
 								<div class="condition_check" id="condition_1">
-									<span><i class="far fa-check-circle"></i></span> <span>이용약관에
+									<span><i id = "icon1" class="far fa-check-circle"></i></span> <span>이용약관에
 										동의합니다.</span>
 								</div>
 							</div>
@@ -128,7 +128,7 @@
 									외의 용도로 열람 또는 이용할 수 없도록 처리하고 있습니다.<br>
 								</div>
 								<div class="condition_check" id="condition_2">
-									<span><i class="far fa-check-circle"></i></span> <span>정보
+									<span><i id = "icon2" class="far fa-check-circle"></i></span> <span>정보
 										수집 및 이용에 동의합니다.</span>
 								</div>
 							</div>
@@ -140,7 +140,7 @@
 								<td>ID
 								<td><input id="id" name="id" type="text">
 									<div class="forminfo">
-										<button class="button" type="button">중복확인</button>
+										<button id="id_check" class="button" type="button" onclick="dupl_ID();">중복확인</button>
 										<span id="idInfo"></span>
 									</div></td>
 							</tr>
@@ -177,6 +177,7 @@
 												<option value="gmail.com">gmail.com</option>
 										</select>
 										<div class="forminfo">
+										<button id="email_check" class="button" type="button">중복확인</button>
 										<span id="emailInfo"></span>
 									</div>
 									
@@ -191,8 +192,7 @@
 												<option value="016">016</option>
 										</select>-<input id="phone1" name="phone1" class="phone" style="margin-left: 3px;" type="tel" maxlength="4">
 									-<input id="phone2" name="phone2" class="phone"  style="margin-left: 3px;" type="tel" maxlength="4">
-									<div class="forminfo">
-									
+									<div class="forminfo">		
 										<div class="forminfo">
 										<button name="phone_check" type="button" class="button">인증하기</button>
 										<span id="phoneInfo"></span>

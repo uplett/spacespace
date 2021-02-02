@@ -42,28 +42,60 @@ function postcode() {
 	}, 1); // 상세주소로 포커스
 };
 
+
+// ID 중복체크
+
+function dupl_ID() {
+	var ID = $("#id").val();
+	
+	$.ajax({
+		url: "dupl_id",
+		type: "POST",
+		dataType: "text",
+		contentType : "text/plain; charset=utf-8;",
+		data: id,
+		
+		success: function(data) {
+			if(data == 0){
+				console.log("아이디 없음");
+				$("#idInfo").text("사용 가능한 아이디입니다.");
+			}else{
+				console.log("아이디 있음");
+				$("#idInfo").css("color", "red");
+				$("#idInfo").text("중복된 아이디입니다.");
+			}
+		}
+		
+		
+	});
+	
+};
+
 // 유효성검사
 
-function check_item(item) {
-	console.log(item+"체크");
-}
 
 function check() {
-	if (check_item($("#id").val()) != "") {
-		return false;
-	} else if ($("#pw").val() != "") {
-		return false;
-	} else if ($("#name").val() != "") {
-		return false;
-	} else if ($("#email_id").val() != "") {
-		return false;
-	} else if ($("#phone1").val() != "") {
-		return false;
-	}else{
-		console.log("유효성 검사 종료");
-		return false;
-		
-	}
+	
+	var lan = [$("#id"), $("#pw"),$("#name"), $("#email_id"),
+		$("#email_ad"), $("#address1"), $("#address2"), $("#phone1"), $("#phone2")];
+	
+	var icon1 = $("#icon1"), icon2 = $("#icon2");
+	
+		if(!icon1.hasClass("pink")|| !icon2.hasClass("pink")){
+			alert("이용약관에 동의해주세요.");
+			return false;
+		}else{
+			for(var i = 0; i<lan.length; i++){
+				if(!lan[i].val()){
+					alert("공백인 란이 존재합니다.");
+					lan[i].focus();
+					return false;
+				}else{
+					console.log("유효성 검사 종료");
+					return true;
+				}
+			}
+		}
 	
 }
 
@@ -112,7 +144,7 @@ $(document).ready(
 
 					var submit = $("#submit");
 
-					var id_val, pw_val, val, val2;
+					var id_val, pw_val, val, val2, data;
 
 					//
 
@@ -121,6 +153,7 @@ $(document).ready(
 					id.on("propertychange change keyup paste input",
 									function() {
 										val = $(this).val();
+										data = {val: val};
 
 										if (val == "") {
 											$("#idInfo").text(

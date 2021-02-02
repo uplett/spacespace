@@ -1,11 +1,8 @@
 package com.spacespace.laika.domain;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
-import org.apache.ibatis.type.Alias;
-
-
-@Alias("memberVO")
 public class MemberVO {
 	
 	private int index;
@@ -14,7 +11,7 @@ public class MemberVO {
 	private String address;
 	private String email;
 	private String phone;
-	private Date regDate;
+	private LocalDateTime regDate;
 	
 	public int getIndex() {
 		return index;
@@ -52,11 +49,9 @@ public class MemberVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Date getRegDate() {
-		return regDate;
-	}
+
 	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+		this.regDate = LocalDateTime.now();
 	}
 	
 	@Override
