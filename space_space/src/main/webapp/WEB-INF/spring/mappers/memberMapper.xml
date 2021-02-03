@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 
-<mapper namespace="com.spacespace.laika.mappers">
+<mapper namespace="com.spacespace.laika.mappers.memberMapper">
 
 <resultMap type="memberVO" id="memberResult">
 	<result property="id" column="id"/>
@@ -18,22 +18,21 @@
 
 <!-- 회원가입 -->
 	<insert id="join" parameterType="memberVO">
-		INSERT INTO member(index
-										, id
-										, pw
+		INSERT INTO space_space.member(id
+										, password
 										, name
 										, address
 										, email
-										, phone,
-										, regDate)
-					VALUES( null,
+										, phone
+										, regdate)
+					VALUES(
 					 		#{id}
 							, #{pw}
 							, #{name}
 							, #{address}
 							, #{email}
 							, #{phone}
-							, #{regDate})
+							, now())
 	
 	</insert>
 

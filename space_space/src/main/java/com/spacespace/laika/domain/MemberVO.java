@@ -7,6 +7,7 @@ public class MemberVO {
 	
 	private int index;
 	private String id;
+	private String name;
 	private String pw;
 	private String address;
 	private String email;
@@ -21,6 +22,13 @@ public class MemberVO {
 	}
 	public String getId() {
 		return id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -53,14 +61,12 @@ public class MemberVO {
 	public void setRegDate(Date regDate) {
 		this.regDate = LocalDateTime.now();
 	}
-	
 	@Override
 	public String toString() {
-		return "MemberVO [index=" + index + ", id=" + id + ", pw=" + pw + ", address=" + address + ", email=" + email
-				+ ", phone=" + phone + ", regDate=" + regDate + "]";
+		return "MemberVO [index=" + index + ", id=" + id + ", name=" + name + ", pw=" + pw + ", address=" + address
+				+ ", email=" + email + ", phone=" + phone + ", regDate=" + regDate + "]";
 	}
 	
-
 	
 
 }

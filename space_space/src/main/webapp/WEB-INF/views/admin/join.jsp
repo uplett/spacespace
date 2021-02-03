@@ -163,7 +163,8 @@
 								<td><input id="address1" name="address1" type="text" class="address" disabled="disabled">
 								<button class="button" type="button" onclick="postcode()" >주소찾기</button>
 								<input id="address2" name="address2" type="text" class="address" 
-							 style="font-size: 13px; margin-left:4px"value="상세주소를 입력해주세요"></td>
+							 style="font-size: 13px; margin-left:4px"value="상세주소를 입력해주세요">
+							 <input id="address" name="address" type="text" class="hidden"></td>
 							</tr>
 							<tr>
 								<td>이메일</td>
@@ -176,6 +177,7 @@
 												<option value="hanmail.net">daum.net</option>
 												<option value="gmail.com">gmail.com</option>
 										</select>
+									<input id="email" class="hidden" name= "email" type="text">
 										<div class="forminfo">
 										<button id="email_check" class="button" type="button">중복확인</button>
 										<span id="emailInfo"></span>
@@ -192,6 +194,7 @@
 												<option value="016">016</option>
 										</select>-<input id="phone1" name="phone1" class="phone" style="margin-left: 3px;" type="tel" maxlength="4">
 									-<input id="phone2" name="phone2" class="phone"  style="margin-left: 3px;" type="tel" maxlength="4">
+									<input id="phone" class="hidden" name= "phone" type="text">
 									<div class="forminfo">		
 										<div class="forminfo">
 										<button name="phone_check" type="button" class="button">인증하기</button>

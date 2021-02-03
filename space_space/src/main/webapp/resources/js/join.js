@@ -77,7 +77,7 @@ function dupl_ID() {
 function check() {
 	
 	var lan = [$("#id"), $("#pw"),$("#name"), $("#email_id"),
-		$("#email_ad"), $("#address1"), $("#address2"), $("#phone1"), $("#phone2")];
+		$("#email_ad"), $("#address1"), $("#phone1"), $("#phone2")];
 	
 	var icon1 = $("#icon1"), icon2 = $("#icon2");
 	
@@ -86,11 +86,22 @@ function check() {
 			return false;
 		}else{
 			for(var i = 0; i<lan.length; i++){
-				if(!lan[i].val()){
+				if(lan[i].val() == ""){
 					alert("공백인 란이 존재합니다.");
 					lan[i].focus();
 					return false;
 				}else{
+					
+					var add2 = $("#address2").val();
+					
+					if(add2 == "상세주소를 입력해주세요"){
+						add2 == "";
+					}
+					
+					$("#address").val($("#address1").val()+"/"+$("#address2").val());
+					$("#email").val($("#email_id").val()+"@"+$("#email_ad").val());
+					$("#phone").val($("#select_phone option:selected").val()+$("#phone1").val()+$("#phone2").val());
+					
 					console.log("유효성 검사 종료");
 					return true;
 				}

@@ -17,7 +17,7 @@
 <div id="allwrap">
 <%@ include file="/../header.jsp"%>
 <div id="mainwrap">
-로그인페이지
+<%@ include file="/../login_main.jsp"%>
 </div>
 <%@ include file="/../footer.jsp"%>
 

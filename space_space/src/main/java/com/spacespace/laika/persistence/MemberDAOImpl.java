@@ -11,11 +11,14 @@ import com.spacespace.laika.domain.MemberVO;
 public class MemberDAOImpl implements MemberDAO{
 
 	@Autowired
-	SqlSessionTemplate sql;
-			
+	private SqlSessionTemplate sql;	
 	
-	public void join(MemberVO vo) throws Exception{
-		sql.insert("memberMapper.join", vo);
+	@Autowired
+	private static final String memberMapper = "com.spacespace.laika.mappers.memberMapper";
+	
+	public void join(MemberVO vo) throws Exception{	
+		System.out.println(vo.toString());
+		sql.insert(memberMapper+".join", vo);
 	}
 	
 	public int check_id(String id) throws Exception{
