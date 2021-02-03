@@ -11,14 +11,12 @@
 <script src="resources/js/main.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>SPACESPACE</title>
+<title>LOGIN</title>
 </head>
 <body>
 <div id="allwrap">
 <%@ include file="/../header.jsp"%>
-<div id="mainwrap">
-<%@ include file="/../login_main.jsp"%>
-</div>
+<%@ include file="login_main.jsp"%>
 <%@ include file="/../footer.jsp"%>
 
 </div>

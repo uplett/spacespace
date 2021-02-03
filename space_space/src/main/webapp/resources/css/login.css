@@ -1,0 +1,108 @@
+body{
+	color: #3c3c3c;
+}
+
+
+#mainwrap{
+	padding-top: 180px;
+	flex-direction:column;
+	align-items: center;
+}
+
+#mainbox{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 95%;
+	height: 100%;
+	align-items: center;
+	padding-bottom: 50px;
+}
+
+#loginbox{
+	margin-top: 30px;
+	width: 800px;
+	height: 400px;
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#loginbox>div{
+	display: flex;
+}
+
+#login_left{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#logo>i{
+	font-size: 40px;
+    color: #b762a1;
+    margin-right: 10px;
+}
+
+#logo_text>a{
+	font-size: 40px;
+    font-weight: bold;	
+}
+
+#login_right{
+	margin-left: 25px;
+	display: flex;
+	flex-direction: column;
+	margin-right: 10px;
+}
+
+#idpw>div>input{
+	width: 320px;
+    height: 40px;
+    border: none;
+    background: #e2e2e2;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+#idpw>div>input:focus{
+	outline:none;
+	box-shadow: 0 0 0 2px pink;
+}
+
+#idpw>div>i{
+	
+}
+
+#loginsub{
+	display:flex;
+}
+
+#loginsub>div{
+	font-size:13px;
+	margin: 10px 0;
+}
+
+#login_submit{
+	display: flex;
+}
+
+#login_submit>input{
+	border: none;
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background: #b762a1;
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 35px;
+}
+
+

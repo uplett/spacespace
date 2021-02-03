@@ -125,7 +125,7 @@ ul, li{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-top: 200px;
+	padding-top: 180px;
 	padding-bottom: 100px;
 	background: linear-gradient(to top, transparent, #ffe6ec) 98%;
 	border: 1px solid #d3d3d338;

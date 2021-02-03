@@ -42,75 +42,141 @@ function postcode() {
 	}, 1); // 상세주소로 포커스
 };
 
-
 // ID 중복체크
 
 function dupl_ID() {
 	var ID = $("#id").val();
-	
+
 	$.ajax({
-		url: "dupl_id",
-		type: "POST",
-		dataType: "text",
+		url : "dupl_id",
+		type : "POST",
+		dataType : "text",
 		contentType : "text/plain; charset=utf-8;",
-		data: id,
-		
-		success: function(data) {
-			if(data == 0){
+		data : id,
+
+		success : function(data) {
+			if (data == 0) {
 				console.log("아이디 없음");
 				$("#idInfo").text("사용 가능한 아이디입니다.");
-			}else{
+			} else {
 				console.log("아이디 있음");
 				$("#idInfo").css("color", "red");
 				$("#idInfo").text("중복된 아이디입니다.");
 			}
 		}
-		
-		
+
 	});
-	
+
 };
 
 // 유효성검사
 
-
 function check() {
-	
-	var lan = [$("#id"), $("#pw"),$("#name"), $("#email_id"),
-		$("#email_ad"), $("#address1"), $("#phone1"), $("#phone2")];
-	
+
+	var lan = [ $("#id"), $("#pw"), $("#name"), $("#email_id"), $("#email_ad"),
+			$("#address1"), $("#phone1"), $("#phone2") ];
+
 	var icon1 = $("#icon1"), icon2 = $("#icon2");
 	
-		if(!icon1.hasClass("pink")|| !icon2.hasClass("pink")){
-			alert("이용약관에 동의해주세요.");
+	var regul_ID = /^[a-zA-Z0-9]{4,12}$/, 
+	regul_PW = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/,
+	regul_NAME = /^[가-힝a-zA-Z]{2,}$/,
+	regul_MAIL = /^([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/,
+	regul_PHONE = /^[0-9]{4,}$/;
+
+	if (!icon1.hasClass("pink") || !icon2.hasClass("pink")) {
+		alert("이용약관에 동의해주세요.");
+		return false;
+	} else {
+
+		if ($("#id").val() == "") {
+			alert("아이디는 비워둘 수 없습니다.");
+			$("#id").focus();
 			return false;
-		}else{
-			for(var i = 0; i<lan.length; i++){
-				if(lan[i].val() == ""){
-					alert("공백인 란이 존재합니다.");
-					lan[i].focus();
-					return false;
-				}else{
-					
-					var add2 = $("#address2").val();
-					
-					if(add2 == "상세주소를 입력해주세요"){
-						add2 == "";
-					}
-					
-					$("#address").val($("#address1").val()+"/"+$("#address2").val());
-					$("#email").val($("#email_id").val()+"@"+$("#email_ad").val());
-					$("#phone").val($("#select_phone option:selected").val()+$("#phone1").val()+$("#phone2").val());
-					
-					console.log("유효성 검사 종료");
-					return true;
+
+		} else if ($("#pw").val() == "") {
+			alert("비밀번호는 비워둘 수 없습니다.");
+			$("#pw").focus();
+			return false;
+
+		} else if ($("#name").val() == "") {
+			alert("이름은 비워둘 수 없습니다.");
+			$("#name").focus();
+			return false;
+
+		} else if ($("#email_id").val() == "") {
+			alert("이메일은 비워둘 수 없습니다.");
+			$("#email_id").focus();
+			return false;
+
+		} else if ($("#address1").val() == "") {
+			alert("주소는 비워둘 수 없습니다.");
+			$("#address1").focus();
+			return false;
+
+		} else if ($("#email_ad").val() == "") {
+			alert("이메일 형식이 올바르지 않습니다.");
+			$("#email_id").focus();
+			return false;
+
+		} else if ($("#phone1").val() == "") {
+			alert("연락처는 비워둘 수 없습니다.");
+			$("#phone1").focus();
+			return false;
+
+		} else if ($("#phone2").val() == "") {
+			alert("연락처 형식이 올바르지 않습니다.");
+			$("#phone2").focus();
+			return false;
+		} else {
+			if (!(regul_ID.test($("#id").val()))) {
+				alert("아이디 형식이 올바르지 않습니다.");
+				return false;
+			} else if (!(regul_PW.test($("#pw").val()))) {
+				alert("비밀번호의 형식이 올바르지 않습니다.");
+				return false;
+			} else if (!(regul_NAME.test($("#name").val()))) {
+				alert("이름의 형식이 올바르지 않습니다.");
+				return false;
+			} else if (!(regul_ID.test($("#email_id").val()))) {
+				alert("이메일의 형식이 올바르지 않습니다.");
+				return false;
+			} else if (!(regul_MAIL.test($("#email_ad").val()))) {
+				alert("이메일의 형식이 올바르지 않습니다.");
+				return false;
+			} else if (!(regul_PHONE.test($("#phone1").val()))) {
+				alert("연락처의 형식이 올바르지 않습니다.");
+				return false;
+			}else if (!(regul_PHONE.test($("#phone2").val()))) {
+				alert("연락처의 형식이 올바르지 않습니다.");
+				return false;
+			}else {
+				var add2 = $("#address2").val();
+
+				if (add2 == "상세주소를 입력해주세요") {
+					add2 == "";
 				}
+
+				$("#address").val(
+						$("#address1").val() + "/" + $("#address2").val());
+				$("#email").val(
+						$("#email_id").val() + "@" + $("#email_ad").val());
+				$("#phone").val(
+						$("#select_phone option:selected").val()
+								+ $("#phone1").val() + $("#phone2").val());
+
+				console.log("유효성 검사 종료");
+				return true;
+
 			}
+
 		}
-	
+	}
+
 }
 
-$(document).ready(
+$(document)
+		.ready(
 				function() {
 
 					// 이용약관 동의
@@ -152,21 +218,23 @@ $(document).ready(
 					// 유효성 검사
 
 					var id = $("#id"), pw = $("#pw"), name = $("#name"), regi_1 = $("#reginum1"), regi_2 = $("#reginum2"), email_id = $("#email_id"), email_ad = $("#email_ad"), phone1 = $("#phone1"), phone2 = $("#phone2");
-
 					var submit = $("#submit");
-
 					var id_val, pw_val, val, val2, data;
 
 					//
 
 					var regul_ID = /^[a-zA-Z0-9]{4,12}$/, regul_PW = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/, regul_NAME = /^[가-힝a-zA-Z]{2,}$/, regul_MAIL = /^([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/, regul_PHONE = /^[0-9]{4,}$/;
 
-					id.on("propertychange change keyup paste input",
+					id
+							.on(
+									"propertychange change keyup paste input",
 									function() {
 										val = $(this).val();
-										data = {val: val};
+										data = {
+											val : val
+										};
 
-										if (val == "") {
+										if (!val) {
 											$("#idInfo").text(
 													"아이디는 비워둘 수 없습니다.");
 										} else {
@@ -181,12 +249,14 @@ $(document).ready(
 										}
 									});
 
-					pw.on("propertychange change keyup paste input",
+					pw
+							.on(
+									"propertychange change keyup paste input",
 									function() {
 										val = $(this).val();
 										id_val = id.val();
 
-										if (val == "") {
+										if (!val) {
 											$("#pwInfo").text(
 													"비밀번호는 비워둘 수 없습니다.");
 										} else {
@@ -211,7 +281,7 @@ $(document).ready(
 							function() {
 								val = $(this).val();
 
-								if (val == "") {
+								if (!val) {
 									$("#nameInfo").text("이름은 비워둘 수 없습니다.");
 								} else {
 									if (regul_NAME.test(val)) {
@@ -228,7 +298,7 @@ $(document).ready(
 								val = $(this).val();
 								val2 = email_ad.val();
 
-								if (val == "" && val2 == "") {
+								if (!val && !val2) {
 									$("#emailInfo").text("이메일은 비워둘 수 없습니다.");
 								} else {
 									if (regul_ID.test(val)) {
@@ -246,7 +316,7 @@ $(document).ready(
 								val = $(this).val();
 								val2 = email_id.val();
 
-								if (val == "" && val2 == "") {
+								if (!val && !val2) {
 									$("#emailInfo").text("이메일은 비워둘 수 없습니다.");
 								} else {
 									if (regul_MAIL.test(val)) {
@@ -264,7 +334,7 @@ $(document).ready(
 								val = $(this).val();
 								val2 = $("#phone2").val();
 
-								if (val == "" && val2 == "") {
+								if (!val && !val2) {
 									$("#phoneInfo").text("휴대폰번호는 비워둘 수 없습니다.");
 								} else {
 									if (regul_PHONE.test(val)) {
@@ -282,7 +352,7 @@ $(document).ready(
 								val = $(this).val();
 								val2 = $("#phone1").val();
 
-								if (val == "" && val2 == "") {
+								if (!val && !val2) {
 									$("#phoneInfo").text("휴대폰번호는 비워둘 수 없습니다.");
 								} else {
 									if (regul_PHONE.test(val)) {

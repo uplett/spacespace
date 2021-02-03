@@ -16,8 +16,9 @@
 			<div id="submenu">
 				<div id="memberpage">
 					<a onclick="memberTab(0)">회원가입</a><a>｜</a>
-					<a onclick="memberTab(1)">주문/배송</a><a>｜</a>
-					<a onclick="memberTab(2)">1:1문의</a>
+					<a onclick="memberTab(1)">로그인</a><a>｜</a>
+					<a onclick="memberTab(2)">주문/배송</a><a>｜</a>
+					<a onclick="memberTab(3)">1:1문의</a>
 				</div>
 				<div id="search">
 					<a><i class="fas fa-search"></i></a>

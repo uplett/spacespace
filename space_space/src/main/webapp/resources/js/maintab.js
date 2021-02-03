@@ -18,8 +18,10 @@
 		if(val == "0"){
 			location.href="join";			
 		}else if(val =="1"){
+			location.href="login";
+		}else if(val == "2"){
 			location.href="shipping";
-		}else if(val =="2"){
+		}else if(val == "3"){
 			location.href="contact";
 		};
 	};
