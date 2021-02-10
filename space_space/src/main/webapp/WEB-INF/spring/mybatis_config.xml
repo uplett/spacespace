@@ -6,6 +6,7 @@
 <configuration>
 <typeAliases>
 	<typeAlias alias="memberVO" type="com.spacespace.laika.domain.MemberVO"/>
+	<typeAlias alias="noticeVO" type="com.spacespace.laika.domain.NoticeVO"/>
 </typeAliases>
 	
 </configuration>

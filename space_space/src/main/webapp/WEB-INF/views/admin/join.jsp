@@ -140,7 +140,7 @@
 								<td>ID
 								<td><input id="id" name="id" type="text">
 									<div class="forminfo">
-										<button id="id_check" class="button" type="button" onclick="dupl_ID();">중복확인</button>
+										<button id="id_check" class="button" type="button" onclick="id_overlap()">중복확인</button>
 										<span id="idInfo"></span>
 									</div></td>
 							</tr>
@@ -170,7 +170,7 @@
 								<td>이메일</td>
 								<td><input id="email_id" name="email_id" type="text">
 									<span style="margin: 2px;">@</span>
-									<input id="email_ad" name="email_ad" type="text" value="">
+									<input id="email_ad" name="email_ad" type="text">
 										<select id="select_email" style="font-size: 13px; margin-left: 3px;">
 												<option value="input" selected>직접입력 ▼</option>
 												<option value="naver.com">naver.com</option>
@@ -179,9 +179,9 @@
 										</select>
 									<input id="email" class="hidden" name= "email" type="text">
 										<div class="forminfo">
-										<button id="email_check" class="button" type="button">중복확인</button>
-										<span id="emailInfo"></span>
-									</div>
+											<button id="email_check" class="button" type="button" onclick="email_overlap()">중복확인</button>
+											<span id="emailInfo"></span>
+										</div>
 									
 									</td>
 							</tr>
@@ -197,7 +197,7 @@
 									<input id="phone" class="hidden" name= "phone" type="text">
 									<div class="forminfo">		
 										<div class="forminfo">
-										<button name="phone_check" type="button" class="button">인증하기</button>
+										<button id="phone_check" name="phone_check" type="button" class="button" onclick="phone_check()">인증하기</button>
 										<span id="phoneInfo"></span>
 									</div>
 									</div></td>

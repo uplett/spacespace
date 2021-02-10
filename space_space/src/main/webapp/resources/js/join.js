@@ -42,30 +42,138 @@ function postcode() {
 	}, 1); // 상세주소로 포커스
 };
 
-// ID 중복체크
+// ID 중복확인
 
-function dupl_ID() {
-	var ID = $("#id").val();
+function id_overlap() {
+	var id = $("#id").val();
+	var regul_ID = /^[a-zA-Z0-9]{4,12}$/;
 
-	$.ajax({
-		url : "dupl_id",
-		type : "POST",
-		dataType : "text",
-		contentType : "text/plain; charset=utf-8;",
-		data : id,
+	if (id == "") {
+		alert("아이디를 입력해 주세요.");
+		$("#id").focus();
+	} else if (!(regul_ID.test(id))) {
+		alert("아이디 형식이 올바르지 않습니다.");
+		$("#id").val("");
+		$("#id").focus();
 
-		success : function(data) {
-			if (data == 0) {
-				console.log("아이디 없음");
-				$("#idInfo").text("사용 가능한 아이디입니다.");
-			} else {
-				console.log("아이디 있음");
-				$("#idInfo").css("color", "red");
-				$("#idInfo").text("중복된 아이디입니다.");
+	} else {
+		$.ajax({
+			type : "post",
+			url : "id_overlap",
+			async : true,
+			data : "id=" + id,
+			success : function(data) {
+				console.log(data);
+				if (data > 0) {
+					alert("이미 사용중인 아이디입니다.");
+
+					// 중복확인 재중복
+					if ($("#id_check").hasClass("true")) {
+						$("#id_check").removeClass("true");
+					}
+
+					$("#id").val("");
+					$("#id").focus();
+
+				} else {
+					alert("사용 가능한 아이디입니다!");
+					$("#id_check").addClass("true");
+				}
+			},
+			error : function() {
+				alert("예기치 못한 오류가 발생했습니다.");
+
 			}
-		}
 
-	});
+		});
+	}
+	;
+
+};
+
+// 이메일 중복확인
+
+function email_overlap() {
+	var email_id = $("#email_id").val();
+	var email_ad = $("#email_ad").val();
+	
+	var email = email_id+"@"+email_ad;
+	var regul_ID = /^[a-zA-Z0-9]{4,12}$/, regul_MAIL = /^([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
+
+	
+	if (email_id == "") {
+		alert("이메일을 입력해 주세요.");
+		$("#email_id").focus();
+		
+	} else if (!(regul_ID.test(email_id))||!(regul_MAIL.test(email_ad))) {
+		
+		alert("이메일 형식이 올바르지 않습니다.");
+		$("#email_id").val("");
+		$("#email_ad").val("");
+		$("#select_email option:eq(0)").prop("selected", true);
+
+	} else {
+		$.ajax({
+			type : "post",
+			url : "email_overlap",
+			async : true,
+			data : "email=" + email,
+			success : function(data) {
+				console.log(data);
+				if (data > 0) {
+					alert("이미 사용중인 이메일입니다.");
+
+					// 중복확인 재중복
+					if ($("#email_check").hasClass("true")) {
+						$("#email_check").removeClass("true");
+					}
+
+					$("#email_id").val("");
+					$("#email_ad").val("");
+					$("#email_id").focus();
+
+				} else {
+					alert("사용 가능한 이메일입니다!");
+					$("#email_check").addClass("true");
+				}
+			},
+			error : function() {
+				alert("예기치 못한 오류가 발생했습니다.");
+
+			}
+
+		});
+	}
+	;
+
+};
+
+//휴대폰 인증
+
+function phone_check() {
+	
+	var regul_PHONE = /^[0-9]{4,}$/;
+	var phone1 = $("#phone1").val(), phone2 = $("#phone2").val();
+	
+	if (phone1 == "" && phone2 == "") {
+		alert("연락처를 입력해 주세요.");
+		$("#phone1").focus();
+		
+	} else if (!(regul_PHONE.test(phone1))||!(regul_PHONE.test(phone2))) {	
+		alert("연락처 형식이 올바르지 않습니다.");
+		$("#phone1").val("");
+		$("#phone2").val("");
+		$("#phone1").focus();
+
+	} else{
+		alert("인증 완료되었습니다.");
+		
+		if(!($("#phone_check").hasClass)){
+			$("#phone_check").addClass("true");
+		}
+		
+	}
+	
 
 };
 
@@ -77,12 +185,8 @@ function check() {
 			$("#address1"), $("#phone1"), $("#phone2") ];
 
 	var icon1 = $("#icon1"), icon2 = $("#icon2");
-	
-	var regul_ID = /^[a-zA-Z0-9]{4,12}$/, 
-	regul_PW = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/,
-	regul_NAME = /^[가-힝a-zA-Z]{2,}$/,
-	regul_MAIL = /^([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/,
-	regul_PHONE = /^[0-9]{4,}$/;
+
+	var regul_ID = /^[a-zA-Z0-9]{4,12}$/, regul_PW = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/, regul_NAME = /^[가-힝a-zA-Z]{2,}$/, regul_MAIL = /^([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/, regul_PHONE = /^[0-9]{4,}$/;
 
 	if (!icon1.hasClass("pink") || !icon2.hasClass("pink")) {
 		alert("이용약관에 동의해주세요.");
@@ -147,10 +251,10 @@ function check() {
 			} else if (!(regul_PHONE.test($("#phone1").val()))) {
 				alert("연락처의 형식이 올바르지 않습니다.");
 				return false;
-			}else if (!(regul_PHONE.test($("#phone2").val()))) {
+			} else if (!(regul_PHONE.test($("#phone2").val()))) {
 				alert("연락처의 형식이 올바르지 않습니다.");
 				return false;
-			}else {
+			} else {
 				var add2 = $("#address2").val();
 
 				if (add2 == "상세주소를 입력해주세요") {
@@ -165,8 +269,23 @@ function check() {
 						$("#select_phone option:selected").val()
 								+ $("#phone1").val() + $("#phone2").val());
 
-				console.log("유효성 검사 종료");
-				return true;
+				// 중복확인 체크
+
+				if (!($("#id_check").hasClass("true"))) {
+					alert("아이디 중복확인을 해주세요.");
+					return false;
+
+				} else if (!($("#id_check").hasClass("true"))) {
+					alert("이메일 중복확인을 해주세요.");
+					return false;
+				} else if (!($("#phone_check").hasClass("true"))) {
+					alert("휴대폰 인증을 해주세요.");
+					return false;
+				} else {
+					console.log("유효성 검사 종료");
+					return true;
+
+				}
 
 			}
 
@@ -199,17 +318,17 @@ $(document)
 					select.change(function() {
 						select.each(function() {
 							if (select.val() == "input") {
-								console.log("직접입력");
+							
 								setTimeout(function() {
 									$("#email_ad").focus(); // 크롬 버그로 수정
 								}, 1);
 								$("#email_ad").val('');
-								console.log($("	#email_ad").text());
+					
 								$("#email_ad").attr("disabled", false);
 							} else {
-								console.log("이외");
+						
 								$("#email_ad").val(select.val());
-								console.log($("#email_ad").val());
+					
 								$("#email_ad").attr("disabled", true);
 							}
 						});

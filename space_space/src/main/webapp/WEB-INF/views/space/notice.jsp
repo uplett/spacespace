@@ -48,7 +48,7 @@ $(document).ready(function() {
 					</ul>
 				</div>
 				<div id="main">
-					<%@ include file="notice_normal.jsp"%>
+					<%@ include file="notice_admin.jsp"%>
 				</div>
 			</div>
 		</div>

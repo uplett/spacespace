@@ -1,6 +1,7 @@
 package com.spacespace.laika.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,14 +26,13 @@ public class AdminController {
 	
 	
 	
-//회원가입
+//////회원가입
 	
 	@RequestMapping(value = "join", method = RequestMethod.GET)
 	public String join() {
 		System.out.println("매핑됨-회원가입폼");		
 		return "/admin/join";
 	}
-	
 	
 	@RequestMapping(value = "join", method = RequestMethod.POST)
 	public String join_post(MemberVO vo) throws Exception {
@@ -41,9 +41,21 @@ public class AdminController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/dupl_id", method = RequestMethod.POST)
-	public void id_check(String memberID) throws Exception{
-		System.out.println("아이디중복확인");
+	@RequestMapping(value = "/id_overlap", method = RequestMethod.POST, produces =
+			"application/text; charset=utf8")
+	public String id_check(HttpServletRequest request) throws Exception{
+		String userID = request.getParameter("id"); //ajax 요청
+		int result = service.check_id(userID);
+		return Integer.toString(result);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/email_overlap", method = RequestMethod.POST, produces =
+			"application/text; charset=utf8")
+	public String email_check(HttpServletRequest request) throws Exception{
+		String email= request.getParameter("email");
+		int result = service.check_email(email);
+		return Integer.toString(result);
 	}
 	
 	@RequestMapping("login")
@@ -57,6 +69,10 @@ public class AdminController {
 		System.out.println("매핑됨-상품정보");
 		return "/admin/product_info";
 	}
+	
+	
+	
+	//////
 	
 	@RequestMapping("user_info")
 	public String userInfo() {

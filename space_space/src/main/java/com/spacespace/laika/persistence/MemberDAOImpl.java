@@ -17,17 +17,23 @@ public class MemberDAOImpl implements MemberDAO{
 	private static final String memberMapper = "com.spacespace.laika.mappers.memberMapper";
 	
 	public void join(MemberVO vo) throws Exception{	
-		System.out.println(vo.toString());
+		System.out.println("가입한 회원정보:"+vo.toString());
 		sql.insert(memberMapper+".join", vo);
 	}
 	
 	public int check_id(String id) throws Exception{
-		return sql.selectOne("memberMapper.check_id", id);
+		System.out.println("ID 중복확인");
+		int result = sql.selectOne(memberMapper+".check_id", id);
+		
+		return result;
 	};
 		
 	public int check_email(String email) throws Exception{
-			return sql.selectOne("memberMapper.check_email", email);
-	
+		System.out.println("이메일 중복확인");
+		System.out.println("전달받은 이메일:"+email);
+		int result =  sql.selectOne(memberMapper+".check_email", email);
+		
+		return result;
 	};
 	
 

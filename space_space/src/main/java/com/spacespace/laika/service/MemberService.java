@@ -6,9 +6,9 @@ public interface MemberService {
 	
 	public void join(MemberVO vo) throws Exception;
 	
-	public void check_id(String id) throws Exception;
+	public int check_id(String id) throws Exception;
 	
-	public void check_email(String email) throws Exception;
+	public int check_email(String email) throws Exception;
 	
 
 }

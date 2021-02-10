@@ -199,3 +199,7 @@ option{
 .hidden{
 	display:none;
 }
+
+#id_check:focus {
+	outline: none;
+}
