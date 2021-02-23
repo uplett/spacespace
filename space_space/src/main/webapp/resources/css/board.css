@@ -9,19 +9,6 @@ body{
 	width: 100%;
 }
 
-#top_map{
-margin-bottom: 20px;	
-padding-right: 20px;
-text-align: end;
-font-size: 15px;
-}
-
-#top_map>span{
-	cursor: pointer;
-	margin-left: 2px;
-	margin-right:2px;
-}
-
 
 #mainbox{
 	display: flex;
@@ -30,41 +17,14 @@ font-size: 15px;
 	align-items: center;
 	width: 95%;
 	height: 100%;
-	align-items: center;
 	box-shadow: 2px -10px 10px #a0a0a0;
 	background: white;
 }
 
 #mainbox>div{
 	display:flex;
+	justify-content:center;
 	width: 100%;
-}
-
-#menu{
-	width: 20%;
-	padding: 30px;
-	background: #fac7d5;
-	z-index: 1;
-}
-
-#menu>ul{
-    font-size: 25px;
-    font-weight: bold;
-    text-align: right;
-    margin-top: 100px;
-}
-
-#menu>ul>li{
-	border-bottom: 2px solid white;
-	padding: 8px 0;
-	cursor: pointer;
-	letter-spacing: -1px;
-	
-}
-
-#menu>ul>li:last-child{
-	color: #b762a1;
-
 }
 
 #main{
@@ -91,9 +51,22 @@ font-size: 15px;
 }
 
 #tablewrap{
-	width: 80%;
+	width: 95%;
 	display: flex;
 	flex-direction: column;
+}
+
+#top_map{
+margin-bottom: 20px;	
+padding-right: 20px;
+text-align: end;
+font-size: 15px;
+}
+
+#top_map>span{
+	cursor: pointer;
+	margin-left: 2px;
+	margin-right:2px;
 }
 
 #searchmenu{
@@ -154,7 +127,7 @@ select:focus{
 	outline: none;
 }
 #tablesearch{
-	width: 180px;
+	width: 280px;
 	border: 2px solid lightpink;
 	border-right: none;
 	background:rgba(255,255,255,0.7);
@@ -166,7 +139,6 @@ select:focus{
 
 #tablesearch>input{
 	border: none;
-	width:100%;
 }
 
 #tablesearch>input:focus{
@@ -182,7 +154,7 @@ table{
 }
 
 tr>td:nth-child(3){
-	width: 60%;
+	width: 50%;
 	cursor: pointer;
 }
 

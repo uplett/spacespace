@@ -4,6 +4,8 @@
 <html>
 <link rel="stylesheet" type="text/css" href="resources/css/maincss.css?a">
 <link rel="stylesheet" type="text/css" href="resources/css/reset.css?a">
+<link rel="stylesheet" type="text/css" href="resources/css/maintemp.css?a">
+<link rel="stylesheet" type="text/css" href="resources/css/product_item.css?a">
 <link rel="shortcut icon" href="resources/icon/favicon.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c945c12587.js" crossorigin="anonymous"></script>
@@ -17,7 +19,15 @@
 <div id="allwrap">
 <%@ include file="/../header.jsp"%>
 <div id="mainwrap">
-소품
+		<div id="mainbox">
+			<div>
+				<div id="main">
+						<%@ include file="props_main.jsp"%>
+				</div>
+			</div>
+		</div>
+		
+		<div id="gotoTOP"><i class="fas fa-arrow-up"></i></div>
 </div>
 <%@ include file="/../footer.jsp"%>
 

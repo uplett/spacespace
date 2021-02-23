@@ -51,19 +51,21 @@
 				<li>
 					<div id="event" onclick="mainTab(3)">EVENT</div>
 					<ul class="hide_menu">
-						<li onclick="eventTab(0)">진행중인 이벤트</li>
-						<li onclick="eventTab(1)">종료된 이벤트</li>
+						<li onclick="eventTab(0)">이벤트</li>
 					</ul>
 				</li>
 				<li>
 					<div id="board" onclick="mainTab(4)">BOARD</div>
 					<ul class="hide_menu">
 						<li onclick="boardTab(0)">자주 묻는 질문</li>
-						<li onclick="boardTab(2)">문의게시판</li>
+						<li onclick="boardTab(1)">문의게시판</li>
 					</ul>
 				</li>
 				<li>
 					<div id="link" onclick="mainTab(5)">LINK</div>
+					<ul class="hide_menu">
+						<li onclick="linkTab(0)">포트폴리오</li>
+					</ul>
 				</li>
 			</ul>
 		</div>

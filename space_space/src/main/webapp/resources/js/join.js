@@ -96,17 +96,16 @@ function id_overlap() {
 function email_overlap() {
 	var email_id = $("#email_id").val();
 	var email_ad = $("#email_ad").val();
-	
-	var email = email_id+"@"+email_ad;
+
+	var email = email_id + "@" + email_ad;
 	var regul_ID = /^[a-zA-Z0-9]{4,12}$/, regul_MAIL = /^([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
 
-	
 	if (email_id == "") {
 		alert("이메일을 입력해 주세요.");
 		$("#email_id").focus();
-		
-	} else if (!(regul_ID.test(email_id))||!(regul_MAIL.test(email_ad))) {
-		
+
+	} else if (!(regul_ID.test(email_id)) || !(regul_MAIL.test(email_ad))) {
+
 		alert("이메일 형식이 올바르지 않습니다.");
 		$("#email_id").val("");
 		$("#email_ad").val("");
@@ -151,29 +150,28 @@ function email_overlap() {
 //휴대폰 인증
 
 function phone_check() {
-	
+
 	var regul_PHONE = /^[0-9]{4,}$/;
 	var phone1 = $("#phone1").val(), phone2 = $("#phone2").val();
-	
+
 	if (phone1 == "" && phone2 == "") {
 		alert("연락처를 입력해 주세요.");
 		$("#phone1").focus();
-		
-	} else if (!(regul_PHONE.test(phone1))||!(regul_PHONE.test(phone2))) {	
+
+	} else if (!(regul_PHONE.test(phone1)) || !(regul_PHONE.test(phone2))) {
 		alert("연락처 형식이 올바르지 않습니다.");
 		$("#phone1").val("");
 		$("#phone2").val("");
 		$("#phone1").focus();
 
-	} else{
+	} else {
 		alert("인증 완료되었습니다.");
-		
-		if(!($("#phone_check").hasClass)){
+
+		if (!($("#phone_check").hasClass)) {
 			$("#phone_check").addClass("true");
 		}
-		
+
 	}
-	
 
 };
 
@@ -318,17 +316,17 @@ $(document)
 					select.change(function() {
 						select.each(function() {
 							if (select.val() == "input") {
-							
+
 								setTimeout(function() {
 									$("#email_ad").focus(); // 크롬 버그로 수정
 								}, 1);
 								$("#email_ad").val('');
-					
+
 								$("#email_ad").attr("disabled", false);
 							} else {
-						
+
 								$("#email_ad").val(select.val());
-					
+
 								$("#email_ad").attr("disabled", true);
 							}
 						});

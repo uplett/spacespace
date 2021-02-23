@@ -17,6 +17,12 @@ public class SpaceController {
 		System.out.println("매핑됨-공지페이지");
 		return "space/notice";
 	}
+	
+	@RequestMapping("new_notice")
+	public String newNotice() {
+		System.out.println("매핑됨-공지추가페이지");
+		return "space/new_notice";
+	}
 
 
 }

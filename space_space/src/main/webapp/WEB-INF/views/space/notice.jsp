@@ -9,9 +9,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c945c12587.js" crossorigin="anonymous"></script>
 <!-- 헤더 스크립트 -->
-<script src="resource/js/notice.js"></script>
+<script src="resources/js/notice.js"></script>
 <script src="resources/js/main.js"></script>
-<script src="resource/js/maintab.js"></script>
+<script src="resources/js/maintab.js"></script>
 <script type="text/javascript">
 function goAbout() {
 	location.href = "space"

@@ -4,11 +4,15 @@
 <html>
 <link rel="stylesheet" type="text/css" href="resources/css/maincss.css?a">
 <link rel="stylesheet" type="text/css" href="resources/css/reset.css?a">
+<link rel="stylesheet" type="text/css" href="resources/css/board.css?a">
 <link rel="shortcut icon" href="resources/icon/favicon.ico">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c945c12587.js" crossorigin="anonymous"></script>
 <!-- 헤더 스크립트 -->
+<script src="resource/js/board.js"></script>
 <script src="resources/js/main.js"></script>
+<script src="resource/js/maintab.js"></script>
+
 <head>
 <meta charset="UTF-8">
 <title>SPACESPACE</title>
@@ -17,7 +21,15 @@
 <div id="allwrap">
 <%@ include file="/../header.jsp"%>
 <div id="mainwrap">
-문의게시판
+		<div id="mainbox">
+			<div>
+				<div id="main">
+					<%@ include file="board_main.jsp"%>
+				</div>
+			</div>
+		</div>
+		
+		<div id="gotoTOP"><i class="fas fa-arrow-up"></i></div>
 </div>
 <%@ include file="/../footer.jsp"%>
 

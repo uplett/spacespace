@@ -61,3 +61,9 @@
 			location.href="board";
 		};
 	};
+	
+	function linkTab(val) {
+		if(val == "0"){
+			location.href="link";			
+		}
+	};
