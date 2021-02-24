@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybtis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+
+<mapper namespace="com.spacespace.laika.mappers.noticeMapper">
+
+<resultMap type="noticeVO" id="noticeResult">
+	<result property="title" column="title"/>
+	<result property="text" column="text"/>
+	<result property="regDate" column="regDate"/>
+</resultMap>
+
+<!-- 공지 추가 -->
+	<insert id="notice_write" parameterType="noticeVO">
+	<![CDATA[
+		INSERT INTO space_space.notice(title
+										, text
+										, post_date)
+					VALUES(
+					 		#{title}
+							, #{text}
+							, now())
+					]]>
+	</insert>
+
+<!-- 공지 디테일 -->
+	<select id="notice_detail" resultType="noticeVO" parameterType="int">
+			<![CDATA[
+		SELECT * FROM space_space.notice WHERE index = #{index} ]]>
+	</select>	
+	
+
+</mapper>

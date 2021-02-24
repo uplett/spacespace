@@ -31,6 +31,7 @@
 				<thead>
 					<tr>
 						<td>번호</td>
+						<td>작성자</td>
 						<td>제목</td>
 						<td>날짜</td>
 						<td></td>
@@ -39,6 +40,7 @@
 				<tbody>
 					<tr>
 						<td id="index">1</td>
+						<td id="admin_id">작성자1</td>
 						<td id="title">제목1</td>
 						<td id="date">날짜1</td>
 						<td><span style="margin-right: 5px;"><i

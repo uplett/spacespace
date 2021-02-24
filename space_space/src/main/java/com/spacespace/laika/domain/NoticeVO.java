@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 public class NoticeVO {
 	
 	private int index;
-	private String admin_id;
 	private String title;
 	private String text;
 	private LocalDateTime post_date;
@@ -16,12 +15,7 @@ public class NoticeVO {
 	public void setIndex(int index) {
 		this.index = index;
 	}
-	public String getAdmin_id() {
-		return admin_id;
-	}
-	public void setAdmin_id(String admin_id) {
-		this.admin_id = admin_id;
-	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -40,6 +34,16 @@ public class NoticeVO {
 	public void setPost_date(LocalDateTime post_date) {
 		this.post_date = LocalDateTime.now();
 	}
+	
+	@Override
+	public String toString() {
+		return "NoticeVO [index=" + index + ", title=" + title + ", text=" + text + ", post_date=" + post_date
+				+ ", getIndex()=" + getIndex() + ", getTitle()=" + getTitle() + ", getText()=" + getText()
+				+ ", getPost_date()=" + getPost_date() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
+	
+	
 	
 	
 }

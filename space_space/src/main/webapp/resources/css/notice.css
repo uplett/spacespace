@@ -181,8 +181,8 @@ table{
 	border: none;
 }
 
-tr>td:nth-child(3){
-	width: 60%;
+tr>td:nth-child(2){
+	width: 65%;
 	cursor: pointer;
 }
 

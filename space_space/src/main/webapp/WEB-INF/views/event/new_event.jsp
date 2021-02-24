@@ -19,7 +19,7 @@
 <script src="https://kit.fontawesome.com/c945c12587.js"
 	crossorigin="anonymous"></script>
 <script src="resources/js/main.js"></script>
-<script src="resources/js/new_notice.js"></script>
+<script src="resources/js/notice.js"></script>
 <!-- 헤더 스크립트 -->
 
 <link rel="stylesheet" type="text/css"
@@ -38,17 +38,21 @@
 		<div id="mainwrap">
 			<div id="mainbox">
 				<div>
-					<form method="post" action="new_notice" onsubmit="return goWrite()">
+					<form method="post" action="/write_notice">
 						<div id="main">
-							<div id="title">
-								<input name="title" type="text"
+							<div id="notice_title">
+								<input name="notice_title" type="text"
 									placeholder="INSERT TITLE HERE">
 							</div>
+							<div id="notice_sub">
+								<input name="notice_sub" type="text"
+									placeholder="요약본을 30자 미만으로 입력해 주세요.">
+							</div>
 							<div id="notice">
-								<textarea id="summernote" name="text"></textarea>
+								<textarea id="summernote" name="notice"></textarea>
 							</div>
 							<div>
-								<input id="submit" type="submit" value="SUBMIT">
+								<input id="submit" type="button" value="SUBMIT" onclick="goWrite(this.form)">
 							</div>
 						</div>
 					</form>
