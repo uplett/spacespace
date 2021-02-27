@@ -2,22 +2,27 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybtis.org/DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
+
 
 <mapper namespace="com.spacespace.laika.mappers.noticeMapper">
 
-<resultMap type="noticeVO" id="noticeResult">
-	<result property="title" column="title"/>
-	<result property="text" column="text"/>
-	<result property="regDate" column="regDate"/>
-</resultMap>
+	<resultMap type="noticeVO" id="noticeResult">
+		<result property="seq" column="seq" />
+		<result property="title" column="title" />
+		<result property="text" column="text" />
 
-<!-- 공지 추가 -->
+		<!-- 자료형이 맞지 않아 따로 바꿔줘야 함 -->
+		<result property="reg_date" column="reg_date"/>
+	</resultMap>
+	
+	
+
+	<!-- 공지 추가 -->
 	<insert id="notice_write" parameterType="noticeVO">
 	<![CDATA[
 		INSERT INTO space_space.notice(title
 										, text
-										, post_date)
+										, reg_date)
 					VALUES(
 					 		#{title}
 							, #{text}
@@ -25,11 +30,53 @@
 					]]>
 	</insert>
 
-<!-- 공지 디테일 -->
-	<select id="notice_detail" resultType="noticeVO" parameterType="int">
-			<![CDATA[
-		SELECT * FROM space_space.notice WHERE index = #{index} ]]>
-	</select>	
+	<!-- 공지 게시판 -->
+	<select id="notice_all" resultType="noticeVO"
+		parameterType="com.spacespace.laika.domain.Criteria">
+	<![CDATA[
 	
+			SELECT * FROM (
+				SELECT seq, title, text, reg_date, row_number() 
+				OVER(ORDER BY seq DESC) 
+				AS rNum FROM space_space.notice
+				) mp
+		WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY seq DESC
+	
+	]]>
+	</select>
+	
+	<!-- 총 공지 갯수 -->
+	
+	<select id="notice_count" resultType="int">
+		<![CDATA[
+		
+		SELECT COUNT(seq) FROM space_space.notice WHERE seq > 0
+		
+		]]>
+		
+	</select>
+
+	<!-- 공지 디테일 -->
+	<select id="notice_detail" resultType="noticeVO"
+		parameterType="int">
+			<![CDATA[
+			
+		SELECT * FROM space_space.notice WHERE seq = #{seq}
+	
+		]]>
+	</select>
+	
+	<!-- 공지 삭제 -->
+	
+	<delete id="notice_delete">
+	<![CDATA[
+	
+		DELETE * FROM space_space.notice WHERE seq = #{seq};
+		ALTER TABLE space_space.notice AUTO_INCREMENT = 1;
+		
+		]]>
+	</delete>
+
 
 </mapper>

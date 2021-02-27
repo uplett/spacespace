@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" type="text/css" href="resources/css/maincss.css?a">
@@ -48,7 +49,10 @@ $(document).ready(function() {
 					</ul>
 				</div>
 				<div id="main">
-					<%@ include file="notice_admin.jsp"%>
+					<c:import url="notice_admin.jsp">
+						<c:param name="notice" value="notice"></c:param>
+						<c:param name="pagination" value="pagination"></c:param>
+					</c:import>
 				</div>
 			</div>
 		</div>

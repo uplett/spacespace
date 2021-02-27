@@ -51,9 +51,10 @@ $(document).ready(function() {
 					<div>
 						<table>
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>${list.index}</td>
+								<td>${list.title}</td>
+								<td>${list.text}</td>
+								<td>${list.regdate}></td>
 							</tr>	
 						</table>
 					</div>

@@ -1,8 +1,11 @@
 package com.spacespace.laika.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spacespace.laika.domain.Criteria;
 import com.spacespace.laika.domain.MemberVO;
 import com.spacespace.laika.domain.NoticeVO;
 import com.spacespace.laika.persistence.MemberDAO;
@@ -24,12 +27,26 @@ public class NoticeServiceImpl implements NoticeService {
 		dao.notice_write(vo);
 	};
 	
-	public NoticeVO notice_detail(int index) throws Exception {
-		return dao.notice_detail(index);
+	public List<NoticeVO> notice_list(Criteria cri) throws Exception{
+		List<NoticeVO> list = dao.notice_list(cri);
+		return list;
 	};
 	
-	public int notice_delete(String index) throws Exception{
-		return 1;
+	public NoticeVO notice_detail(int seq) throws Exception {
+		return dao.notice_detail(seq);
+	};
+	
+	public int notice_count() throws Exception{	
+		
+		int count = dao.notice_count();	
+		System.out.println("noticeService"+count);
+		return count;
+		
+	}
+	
+	public void notice_delete(int seq) throws Exception{
+		dao.notice_delete(seq);
+		
 	};
 	
 	public int notice_notify(String email) throws Exception {

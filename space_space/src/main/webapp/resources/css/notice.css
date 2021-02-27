@@ -211,3 +211,28 @@ tbody{
 	width:100%;
 	justify-content: center;
 }
+
+#page>ul{
+	display:flex;
+}
+
+#page>li{
+	margin: 0 2px;
+	color: #3c3c3c;
+	text-decoration: none;
+}
+
+a:link{
+	color: #3c3c3c;
+	margin: 0 2px;
+	text-decoration: none;
+}
+a:visited {
+	color: #3c3c3c;
+	text-decoration: none;
+}
+
+a:hover{
+	color:#d26074;
+	text-decoration: none;
+}
